@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seckill.core.mapper.OrderDetailMapper">
+    <insert id="insertOrderDetail" parameterType="com.seckill.core.pojo.OrderDetail">
+        <![CDATA[
+            INSERT INTO
+            order_detail(order_detail_no,order_no,user_id,product_id,product_count,product_price,create_time)
+            VALUES (#{orderDetailNo},#{orderNo},#{userId},#{productId},#{productCount},#{productPrice},SYSDATE())
+        ]]>
+    </insert>
+</mapper>

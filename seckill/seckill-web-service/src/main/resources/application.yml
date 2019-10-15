@@ -1,0 +1,40 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /
+
+logging:
+  level:
+    com:
+      scekill:
+        core:
+          mapper: debug
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/seckill?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: tangcp
+
+  profiles:
+      active: receiver
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.seckill.core.mapper
+  configuration:
+    map-underscore-to-camel-case: true
+

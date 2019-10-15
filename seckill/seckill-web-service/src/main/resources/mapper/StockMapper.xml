@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seckill.core.mapper.StockMapper">
+    <sql id="stock_sql">
+        select stb.stock_id,stb.product_id,stb.product_name,stb.stock_count,stb.stock_sale,stb.stock_version from stock stb
+    </sql>
+
+    <select id="queryStocks" resultType="com.seckill.core.pojo.Stock">
+        <include refid="stock_sql"/>
+    </select>
+    <select id="queryStock" resultType="com.seckill.core.pojo.Stock" parameterType="java.lang.String">
+        <include refid="stock_sql"/>
+        <where>
+            stb.product_id = #{productId}
+        </where>
+    </select>
+    <update id="updateStock" parameterType="com.seckill.core.pojo.Stock">
+        update  stock
+        set
+        stock_sale = stock_sale + 1 ,
+        stock_version = stock_version + 1
+        <where>
+            product_id = #{productId}
+            and stock_version = #{stockVersion}
+        </where>
+    </update>
+
+</mapper>

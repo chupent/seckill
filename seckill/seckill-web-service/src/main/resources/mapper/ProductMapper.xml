@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seckill.core.mapper.ProductMapper">
+    <insert id="insertProduct">
+        insert into product(product_no,product_name,product_price,type,create_time)
+        values (#{product.productNo},#{product.productName},#{product.productPrice},#{product.type},SYSDATE())
+    </insert>
+</mapper>
